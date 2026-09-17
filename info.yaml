@@ -1,23 +1,39 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+  title:        "Tiny FPGA"      # Project title
+  author:       "Yuri Honegger"  # Your name
+  discord:      "recursive_tree" # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "A simple FPGA"      # One line description of what your project does
+  language:     "SystemVerilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     50000000       # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
   tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
+  top_module:  "tt_um_yuri_fpga"
 
   # List your project's source files here.
   # Source files must be in ./src and you must list each source file separately, one per line.
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "project.v"
+    - "tt_fpga/fpga_pkg.sv"
+    - "tt_fpga/input_mux.sv"
+    - "tt_fpga/test/infra/tb_tool.sv"
+    - "tt_fpga/test/infra/tb_clk_pkg.sv"
+    - "tt_fpga/test/infra/config_sc_loader.sv"
+    - "tt_fpga/test/infra/rst_clk_gen.sv"
+    - "tt_fpga/test/tb_grid_scanchain.sv"
+    - "tt_fpga/test/tb_bb_clb.sv"
+    - "tt_fpga/test/tb_grid.sv"
+    - "tt_fpga/test/tb_bb_scanchain.sv"
+    - "tt_fpga/lutN.sv"
+    - "tt_fpga/fpga_grid.sv"
+    - "tt_fpga/fpga_building_block.sv"
+    - "tt_fpga/configurable_logic_block.sv"
+    - "tt_fpga/fabric_switch.sv"
+    - "tt_fpga/config_sc_register.sv"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
