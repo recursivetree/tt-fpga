@@ -9,11 +9,14 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This is a tiny FPGA. It has LUTs and a routing fabric!
 
 ## How to test
 
-Explain how to use your project
+1. Generate a bitstream using the bitstream tools
+2. enable the configmode pin
+3. shift the bitstream in
+4. test the fpga using the io pins
 
 ## External hardware
 
