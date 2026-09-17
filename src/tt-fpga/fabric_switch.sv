@@ -29,15 +29,10 @@ module fabric_switch #(
     localparam integer ConfigSize = StartCount*8;
 
     typedef struct packed {
-        logic use_clb;
-        logic use_clockwise;
-    } fabric_wire_start_t;
-
-    typedef struct packed {
-      fabric_wire_start_t [StartCount-1:0] west_config;
-      fabric_wire_start_t [StartCount-1:0] north_config;
-      fabric_wire_start_t [StartCount-1:0] east_config;
-      fabric_wire_start_t [StartCount-1:0] south_config;
+      logic [StartCount-1:0][1:0] west_config;
+      logic [StartCount-1:0][1:0] north_config;
+      logic [StartCount-1:0][1:0] east_config;
+      logic [StartCount-1:0][1:0] south_config;
     } fabric_switch_t;
 
     //logic [ConfigSize-1:0] switch_config;
@@ -73,17 +68,17 @@ module fabric_switch #(
         for (genvar group_index = 0; group_index < StartCount; group_index++) begin : start_group
             localparam integer ChannelPosition = group_index * WireLength;
 
-            assign west_o[ChannelPosition] = switch_config.west_config[group_index].use_clb ? clb_output_i :
-                                             switch_config.west_config[group_index].use_clockwise ? north_i[ChannelPosition] : south_i[ChannelPosition];
+            assign west_o[ChannelPosition] = switch_config.west_config[group_index][1] ? clb_output_i :
+                                             switch_config.west_config[group_index][0] ? north_i[ChannelPosition] : south_i[ChannelPosition];
 
-            assign north_o[ChannelPosition] = switch_config.north_config[group_index].use_clb ? clb_output_i :
-                                              switch_config.north_config[group_index].use_clockwise ? east_i[ChannelPosition] : west_i[ChannelPosition];
+            assign north_o[ChannelPosition] = switch_config.north_config[group_index][1] ? clb_output_i :
+                                              switch_config.north_config[group_index][0] ? east_i[ChannelPosition] : west_i[ChannelPosition];
 
-            assign east_o[ChannelPosition] = switch_config.east_config[group_index].use_clb ? clb_output_i :
-                                             switch_config.east_config[group_index].use_clockwise ? south_i[ChannelPosition] : north_i[ChannelPosition];
+            assign east_o[ChannelPosition] = switch_config.east_config[group_index][1] ? clb_output_i :
+                                             switch_config.east_config[group_index][0] ? south_i[ChannelPosition] : north_i[ChannelPosition];
 
-            assign south_o[ChannelPosition] = switch_config.south_config[group_index].use_clb ? clb_output_i :
-                                              switch_config.south_config[group_index].use_clockwise ? west_i[ChannelPosition] : east_i[ChannelPosition];
+            assign south_o[ChannelPosition] = switch_config.south_config[group_index][1] ? clb_output_i :
+                                              switch_config.south_config[group_index][0] ? west_i[ChannelPosition] : east_i[ChannelPosition];
 
         end
     endgenerate

@@ -15,9 +15,7 @@ module tt_um_yuri_fpga (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-
     // All output pins must be assigned. If not used, assign to 0.
-    assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
     assign uio_out = 0;
     assign uio_oe  = 0;
 
@@ -29,9 +27,9 @@ module tt_um_yuri_fpga (
         .YSize(3),
         .NumIoInputs(8),
         .NumIoOutputs(8),
-        .LutN(LutN),
-        .WireLength(WireLength),
-        .StartCount(StartCount)
+        .LutN(4),
+        .WireLength(2),
+        .StartCount(2)
     ) i_dut (
         .clk_i(clk),
         .rst_ni(rst_n),

@@ -17,23 +17,15 @@ project:
   # Source files must be in ./src and you must list each source file separately, one per line.
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
-    - "project.v"
-    - "tt_fpga/fpga_pkg.sv"
-    - "tt_fpga/input_mux.sv"
-    - "tt_fpga/test/infra/tb_tool.sv"
-    - "tt_fpga/test/infra/tb_clk_pkg.sv"
-    - "tt_fpga/test/infra/config_sc_loader.sv"
-    - "tt_fpga/test/infra/rst_clk_gen.sv"
-    - "tt_fpga/test/tb_grid_scanchain.sv"
-    - "tt_fpga/test/tb_bb_clb.sv"
-    - "tt_fpga/test/tb_grid.sv"
-    - "tt_fpga/test/tb_bb_scanchain.sv"
-    - "tt_fpga/lutN.sv"
-    - "tt_fpga/fpga_grid.sv"
-    - "tt_fpga/fpga_building_block.sv"
-    - "tt_fpga/configurable_logic_block.sv"
-    - "tt_fpga/fabric_switch.sv"
-    - "tt_fpga/config_sc_register.sv"
+    - "project.sv"
+    - "tt-fpga/fpga_pkg.sv"
+    - "tt-fpga/input_mux.sv"
+    - "tt-fpga/lutN.sv"
+    - "tt-fpga/fpga_grid.sv"
+    - "tt-fpga/fpga_building_block.sv"
+    - "tt-fpga/configurable_logic_block.sv"
+    - "tt-fpga/fabric_switch.sv"
+    - "tt-fpga/config_sc_register.sv"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
