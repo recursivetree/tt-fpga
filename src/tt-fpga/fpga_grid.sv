@@ -33,10 +33,12 @@ module fpga_grid #(
 
     logic [XSize-1:0][YSize-1:0] carry_grid;
 
+    `ifdef TARGET_SIMULATION
     initial begin
         assert(NumIoInputs % ChannelSize == 0);
         assert(NumIoOutputs % ChannelSize == 0);
     end
+    `endif
 
     generate
         for(genvar i = 0; i < XSize; i++) begin : x_grid_loop

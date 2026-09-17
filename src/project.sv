@@ -23,8 +23,8 @@ module tt_um_yuri_fpga (
     wire _unused = &{ena, clk, rst_n, 1'b0};
 
     fpga_grid #(
-        .XSize(3),
-        .YSize(3),
+        .XSize(2),
+        .YSize(2),
         .NumIoInputs(8),
         .NumIoOutputs(8),
         .LutN(4),
